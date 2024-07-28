@@ -1,0 +1,32 @@
+server:
+    port: 8080
+    servlet:
+       context-path: /circuit-breaker-demo
+
+management:
+    endpoints:
+       web:
+          exposure:
+             include: "*"
+    endpoint:
+       health:
+          show-details: always
+    health:
+       circuitbreakers:
+          enabled: true
+
+
+resilience4j:
+    circuitbreaker:
+      configs:
+        default:
+          registerHealthIndicator: true
+          slidingWindowSize: 10
+          failureRateThreshold: 50
+          minimumNumberOfCalls: 5
+          slowCallRateThreshold: 100
+          slowCallDurationThreshold: 1000
+          permittedNumberOfCallsInHalfOpenState: 3
+          waitDurationInOpenState: 5s
+          automaticTransitionFromOpenToHalfOpenEnabled: true
+          eventConsumerBufferSize: 10
