@@ -1,8 +1,7 @@
 package co.com.coding.togegher.controller;
 
-import co.com.coding.togegher.service.IPaymentService;
 import co.com.coding.togegher.service.PaymentService;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import co.com.coding.togegher.service.PaymentServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,16 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PaymentController {
 
-    private final IPaymentService paymentService;
+    private final PaymentService paymentService;
 
     @Autowired
 
-    public PaymentController(PaymentService paymentService) {
+    public PaymentController(PaymentServiceImp paymentService) {
         this.paymentService = paymentService;
     }
 
     @GetMapping("/processPayment")
-    //@CircuitBreaker(name = "processPayment", fallbackMethod = "fallbackMethod")
     public String processPayment() throws Exception {
             return paymentService.processPayment();
     }

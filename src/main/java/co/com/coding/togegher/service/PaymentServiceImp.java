@@ -1,21 +1,18 @@
-package co.com.coding.togegher.manager;
+package co.com.coding.togegher.service;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-
-@Component
-public class PaymentManager implements IPaymentManager {
-
-//    private final static String URI = "http://localhost:8090/api-demo/processPaymentDelay";
+@Service
+public class PaymentServiceImp implements PaymentService {
     private final static String URI = "http://localhost:8090/api-demo/processPayment";
     private RestTemplate restTemplate;
 
     @Autowired
-    public PaymentManager(RestTemplate restTemplate) {
+    public PaymentServiceImp(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
@@ -30,7 +27,6 @@ public class PaymentManager implements IPaymentManager {
         } catch (Exception ex) {
             throw ex;
         }
-
     }
 
 
