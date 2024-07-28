@@ -21,12 +21,17 @@ resilience4j:
       configs:
         default:
           registerHealthIndicator: true
+
+          slidingWindowType: COUNT_BASED
           slidingWindowSize: 10
           failureRateThreshold: 50
           minimumNumberOfCalls: 5
+
           slowCallRateThreshold: 100
           slowCallDurationThreshold: 1000
+
           permittedNumberOfCallsInHalfOpenState: 3
           waitDurationInOpenState: 5s
           automaticTransitionFromOpenToHalfOpenEnabled: true
+
           eventConsumerBufferSize: 10
