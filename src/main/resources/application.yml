@@ -35,3 +35,8 @@ resilience4j:
           automaticTransitionFromOpenToHalfOpenEnabled: true
 
           eventConsumerBufferSize: 10
+
+          ignoreExceptions:
+            - com.demo.resilencia.exception.NotFoundException
+#            - javax.validation.ValidationException
+            - org.springframework.web.method.annotation.MethodArgumentTypeMismatchException

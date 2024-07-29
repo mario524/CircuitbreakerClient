@@ -1,4 +1,4 @@
-package co.com.coding.togegher;
+package com.demo.resilencia;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

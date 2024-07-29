@@ -1,9 +1,11 @@
-package co.com.coding.togegher.controller;
+package com.demo.resilencia.controller;
 
-import co.com.coding.togegher.service.PaymentService;
-import co.com.coding.togegher.service.PaymentServiceImp;
+import com.demo.resilencia.service.PaymentService;
+import com.demo.resilencia.service.PaymentServiceImp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,9 +19,9 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
 
-    @GetMapping("/processPayment")
-    public String processPayment() throws Exception {
-            return paymentService.processPayment();
+    @GetMapping("/processPayment/{opcionEvent}")
+    public String processPayment(@PathVariable  String opcionEvent) throws Exception {
+            return paymentService.processPayment(opcionEvent);
     }
 
     public String fallbackMethod(Throwable throwable) {
