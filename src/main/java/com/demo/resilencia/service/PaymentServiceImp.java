@@ -34,7 +34,9 @@ public class PaymentServiceImp implements PaymentService {
         }
     }
 
-
+    /*
+    * java.net.ConnectException: Connection refused: conne
+     */
     public String fallbackMethod(Exception throwable) {
         System.out.println("fallbackMethod");
         log.error("FB " + throwable.getMessage());
